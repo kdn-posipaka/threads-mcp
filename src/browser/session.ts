@@ -3,6 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { launchPersistentContext } from 'cloakbrowser';
 import type { BrowserContext, Page, Response } from 'playwright';
+import { browserFingerprintOptions } from './options.js';
 
 // ─── Configuration ────────────────────────────────────────────────────────────
 
@@ -16,9 +17,6 @@ export const PROFILE_DIR =
 // default (needs a display: WSLg, a desktop X server, or xvfb for servers).
 // Set THREADS_HEADLESS=true only to experiment.
 const HEADLESS = process.env.THREADS_HEADLESS === 'true';
-
-const USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 export function debug(msg: string): void {
   if (process.env.DEBUG === 'true') process.stderr.write(`[threads-mcp] ${msg}\n`);
@@ -40,9 +38,8 @@ async function createContext(headless: boolean): Promise<BrowserContext> {
   const ctx = (await launchPersistentContext({
     userDataDir: PROFILE_DIR,
     headless,
-    userAgent: USER_AGENT,
     locale: 'en-US',
-    timezone: 'Asia/Jakarta',
+    ...browserFingerprintOptions(),
     viewport: { width: 1366, height: 900 },
     humanize: true,
     args: ['--no-sandbox', '--disable-dev-shm-usage'],
