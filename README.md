@@ -313,6 +313,8 @@ All optional — see `.env.example`, copy to `.env` to override.
 | `THREADS_DOMAIN`                 | `threads.com`                   | Threads domain (`threads.net` redirects here).                            |
 | `THREADS_PROFILE_DIR`            | `~/.threads-mcp/chrome-profile` | Where the saved login lives.                                              |
 | `THREADS_HEADLESS`               | `false`                         | Keep `false` — headless is detected.                                      |
+| `THREADS_USER_AGENT`             | CloakBrowser default            | Optional browser user-agent override; blank values are ignored.           |
+| `THREADS_TIMEZONE`               | CloakBrowser default            | Optional browser timezone override; blank values are ignored.             |
 | `THREADS_MIN_ACTION_INTERVAL_MS` | `8000`                          | Minimum gap between write actions. Raise to be safer.                     |
 | `CACHE_TTL_MS`                   | `30000`                         | In-memory read-cache lifetime.                                            |
 | `THREADS_LOCK_TIMEOUT_MS`        | `120000`                        | Ceiling on one browser operation; on timeout the page resets.             |

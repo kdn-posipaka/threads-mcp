@@ -10,17 +10,19 @@ For installing the package or cloning the repo, see **[Setup](../README.md#setup
 
 All optional. Set them in your MCP client's **`env`** block, or copy `.env.example` to `.env` when developing from a checkout.
 
-| Variable                         | Default                         | Description                                                      |
-| -------------------------------- | ------------------------------- | ---------------------------------------------------------------- |
-| `THREADS_DOMAIN`                 | `threads.com`                   | Threads domain (`threads.net` redirects here).                   |
-| `THREADS_PROFILE_DIR`            | `~/.threads-mcp/chrome-profile` | Where the saved login lives.                                     |
-| `THREADS_HEADLESS`               | `false`                         | Keep `false` — headless is detected.                             |
-| `THREADS_MIN_ACTION_INTERVAL_MS` | `8000`                          | Minimum gap between write actions. Raise to be safer.            |
-| `CACHE_TTL_MS`                   | `30000`                         | In-memory read-cache lifetime.                                   |
-| `THREADS_LOCK_TIMEOUT_MS`        | `120000`                        | Ceiling on one browser operation; the page is reset if it fires. |
-| `THREADS_MAX_MEDIA_BYTES`        | `67108864`                      | Largest accepted media file (64 MB), local or downloaded.        |
-| `THREADS_MEDIA_TIMEOUT_MS`       | `60000`                         | Per-download timeout for `http(s)` media.                        |
-| `DEBUG`                          | `false`                         | Log startup, GraphQL op names, scheduler ticks.                  |
+| Variable                         | Default                         | Description                                                       |
+| -------------------------------- | ------------------------------- | ----------------------------------------------------------------- |
+| `THREADS_DOMAIN`                 | `threads.com`                   | Threads domain (`threads.net` redirects here).                    |
+| `THREADS_PROFILE_DIR`            | `~/.threads-mcp/chrome-profile` | Where the saved login lives.                                      |
+| `THREADS_HEADLESS`               | `false`                         | Keep `false` — headless is detected.                              |
+| `THREADS_USER_AGENT`             | CloakBrowser default            | Optional user-agent override; whitespace-only values are ignored. |
+| `THREADS_TIMEZONE`               | CloakBrowser default            | Optional timezone override; whitespace-only values are ignored.   |
+| `THREADS_MIN_ACTION_INTERVAL_MS` | `8000`                          | Minimum gap between write actions. Raise to be safer.             |
+| `CACHE_TTL_MS`                   | `30000`                         | In-memory read-cache lifetime.                                    |
+| `THREADS_LOCK_TIMEOUT_MS`        | `120000`                        | Ceiling on one browser operation; the page is reset if it fires.  |
+| `THREADS_MAX_MEDIA_BYTES`        | `67108864`                      | Largest accepted media file (64 MB), local or downloaded.         |
+| `THREADS_MEDIA_TIMEOUT_MS`       | `60000`                         | Per-download timeout for `http(s)` media.                         |
+| `DEBUG`                          | `false`                         | Log startup, GraphQL op names, scheduler ticks.                   |
 
 Two of these exist to stop one bad input from taking the whole server with it.
 Tool calls share a single browser page and run one at a time, so an operation
